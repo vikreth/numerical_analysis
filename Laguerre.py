@@ -44,8 +44,7 @@ def laguerre(poly, x0, eps=1e-16, max_iter=100):
         x0 = x1
         
         # Display iteration information
-        print(f"Iteration {i+1}: x = {x0:.16f}, f(x) = {f:.16f
-                                                        }")
+        print(f"Iteration {i+1}: x = {x0:.16f}, f(x) = {f:.16f}")
     
     # Did not converge within the maximum number of iterations
     raise Exception("Laguerre method did not converge.")
