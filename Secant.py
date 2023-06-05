@@ -18,9 +18,9 @@ def SectM(f, pa, pb, tol, No):
     q1 = f(p1)
 
     # Display table header
-    print("{:<7s} {:<20s} {:<20s}".format("i", "p", "f(p)"))
-    print("{:<7d} {:<20f} {:<20e}".format(i-2, p0, q0))
-    print("{:<7d} {:<20f} {:<20e}".format(i-1, p1, q1))
+    print("{:<7s} {:<25s} {:<25s}".format("i", "p", "f(p)"))
+    print("{:<7d} {:<25.15f} {:<25.15e}".format(i-2, p0, q0))
+    print("{:<7d} {:<25.15f} {:<25.15e}".format(i-1, p1, q1))
 
     # Perform iterations
     while i <= No:
@@ -28,12 +28,10 @@ def SectM(f, pa, pb, tol, No):
         fp = f(p)
         
         # Display intermediate results
-        print("{:<7d} {:<20f} {:<20e}".format(i, p, fp))
+        print("{:<7d} {:<25.15f} {:<25.15e}".format(i, p, fp))
         
         # Check for convergence
         if abs(fp) < tol:
-        #if abs(fp) < 1.0e-4:
-        #if abs(p-pa) < 1.0e-4:
             return p
         
         # Update variables for next iteration
@@ -46,11 +44,11 @@ def SectM(f, pa, pb, tol, No):
     # Display error message if maximum number of iterations is reached
     print("After {} iterations, could not find root within tolerance.".format(No))
 
-# Test the function with example parameters
-def f(x):
-    from math import exp
-    return exp(x) - 2*x - 2
-
-root = SectM(f=f, pa=1, pb=2, tol=1.0e-16, No=1000)
-if root:
-    print("\nRoot found at x = {}".format(root))
+if __name__ == '__main__':
+    from math import exp, pi, cos
+    # Test the function with example parameters
+    def f(x):
+        return cos(x) - x
+    root = SectM(f=f, pa=0, pb=pi/2, tol=1.0e-10, No=1000)
+    if root:
+        print("\nRoot found at x = {:.15f}".format(root))

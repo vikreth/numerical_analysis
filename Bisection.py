@@ -30,7 +30,7 @@ def bisection(fun, a, b, tol=1e-6, max_iter=10000):
         i += 1
         p = (a+b)/2
         fp = fun(p)
-        print(f"Iteration {i}: x0={a:.16f}, x1={b:.16f}, p={p:.16f}, f(p)={fp:.16f}")
+        print(f"Iteration {i}: x0={a:.16f}, x1={b:.16f}, p_{i}={p:.16f}, f(p_{i})={fp:.16f}")
 
         # Update the interval by checking the sign of the function value at midpoint
         if fp == 0:  # Root has been found
@@ -49,7 +49,7 @@ if __name__ == '__main__':
     
     import math as m
     def func(x):
-        return m.exp(x)-2*x-2
+        return m.sqrt(x) - m.cos(x)
 
-    root = bisection(func, -1, 0)
+    root = bisection(func, 0, 1)
     print(f"The root is approximately {root:.6f}")

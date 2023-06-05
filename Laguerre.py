@@ -50,6 +50,12 @@ def laguerre(poly, x0, eps=1e-16, max_iter=100):
     raise Exception("Laguerre method did not converge.")
 
 if __name__ == '__main__':
-    poly = [1,-9,34,-20,-261,949,-1014]
-    x0 = 0
-    laguerre(poly=poly, x0=x0)
+    poly = [1, -2, 1]  # Coefficients of the polynomial in decreasing order
+    x0 = 0   # Initial guess of the root
+    eps = 1e-16              # Desired accuracy
+    max_iter = 100           # Maximum number of iterations
+
+    # Find a root using the Laguerre method
+    root = laguerre(poly, x0, eps=eps, max_iter=max_iter)
+
+    print(f"Root: {root:.16f}")
